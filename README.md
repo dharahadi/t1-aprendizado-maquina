@@ -40,7 +40,7 @@ cd t1-aprendizado-maquina
  
 2. Crie o ambiente virtual:
 ```bash
-python3 -m venv .venv
+python3 -m venv .venv          # no Windows: python -m venv .venv
 ```
  
 3. Ative o ambiente:
@@ -59,7 +59,7 @@ pip install pandas==2.3.3 numpy==2.0.2 scikit-learn==1.6.1 scipy==1.13.1 matplot
 jupyter notebook T1_Regenera.ipynb
 ```
  
-6. No Jupyter, clique em **Kernel > Restart & Run All**.
+6. No Jupyter, clique em **Kernel > Restart Kernel and Run All Cells**.
 ## Sementes
  
 Todas as sementes já estão fixadas no código:
