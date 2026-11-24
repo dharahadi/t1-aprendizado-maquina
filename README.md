@@ -1,77 +1,78 @@
 # T1 - Aprendizado Não Supervisionado (Dataset Regenera)
-
+ 
 Aprendizado de Máquina - Prof. Me. Otávio Parraga - PUCRS
-
+ 
 ## Integrantes
-
+ 
 | Nome | Matrícula |
-|---|
-|Thomaz Szeckir| 23102712 |
-|Dhara Hadi| 23102242|
-|Matheus Azevedo| 23180103 |
-|Gabriel Ottonelli| 23107019 |
-|Samuel Morales| 23108180 |
-|Júlia Bettiol| 23102448 |
-
+|---|---|
+| Júlia Bettiol de Oliveira | 23102448 |
+| Samuel da Silva Morales | 23108180 |
+| Thomaz Gomes Szeckir | 23102712 |
+| Dhara Husein Abdel Hadi | 23102242 |
+| Matheus Jefremovas Azevedo | 23180103 |
+| Gabriel Schwengber Ottonelli | 23107019 |
+ 
 ## Algoritmos escolhidos
-
+ 
 | Tarefa | Algoritmo 1 | Algoritmo 2 |
 |---|---|---|
 | A - Agrupamento | K-Means | Hierárquico aglomerativo com ligação de Ward |
 | B - Redução de dimensionalidade | PCA (linear) | UMAP (não linear) |
-
-## Estrutura dos arquivos
-
+ 
+## Arquivos
+ 
 | Arquivo | Conteúdo |
 |---|---|
-| `T1_Regenera.ipynb` | notebook com todo o trabalho, já executado (código, figuras e interpretações) |
+| `T1_Regenera.ipynb` | notebook com todo o trabalho, já executado |
 | `Data_REG.tsv` | dataset original |
 | `README.md` | este arquivo |
-
-## Como reproduzir
-
-É preciso ter Python 3.9 ou mais recente, e o `Data_REG.tsv` precisa estar na mesma pasta do notebook.
-
+ 
+## Como rodar
+ 
+Requisito: Python 3.9 a 3.12.
+ 
+1. Baixe o projeto:
 ```bash
-python -m venv .venv
-source .venv/bin/activate          # no Windows: .venv\Scripts\activate
-pip install pandas numpy scikit-learn scipy matplotlib seaborn umap-learn jupyter
+git clone https://github.com/dharahadi/t1-aprendizado-maquina.git
+cd t1-aprendizado-maquina
+```
+ 
+2. Crie o ambiente virtual:
+```bash
+python3 -m venv .venv
+```
+ 
+3. Ative o ambiente:
+```bash
+source .venv/bin/activate      # macOS e Linux
+.venv\Scripts\activate         # Windows
+```
+ 
+4. Instale as dependências:
+```bash
+pip install pandas==2.3.3 numpy==2.0.2 scikit-learn==1.6.1 scipy==1.13.1 matplotlib==3.9.4 seaborn==0.13.2 umap-learn==0.5.12 numba==0.60.0 jupyter
+```
+ 
+5. Abra o notebook:
+```bash
 jupyter notebook T1_Regenera.ipynb
 ```
-
-Depois é só abrir o notebook e rodar Kernel > Restart & Run All. Pelo terminal também dá:
-
-```bash
-jupyter nbconvert --to notebook --execute --inplace T1_Regenera.ipynb
-```
-
-### Semente
-
-Tudo que é aleatório usa `SEED = 42` (K-Means, PCA, UMAP, validação cruzada e as subamostras do teste de estabilidade). O Ward é determinístico. Nos testes de estabilidade da UMAP usamos as sementes 0 e 1 de propósito. Com a mesma versão das bibliotecas os resultados se repetem, mas em outra versão do `umap-learn` ou do `numba` a figura da UMAP pode sair rotacionada ou espelhada, mantendo a mesma estrutura.
-
-### Versões usadas
-
-| Biblioteca | Versão |
-|---|---|
-| Python | 3.9.6 |
-| pandas | 2.3.3 |
-| numpy | 2.0.2 |
-| scikit-learn | 1.6.1 |
-| scipy | 1.13.1 |
-| matplotlib | 3.9.4 |
-| seaborn | 0.13.2 |
-| umap-learn | 0.5.12 |
-| numba | 0.60.0 |
-
+ 
+6. No Jupyter, clique em **Kernel > Restart & Run All**.
+## Sementes
+ 
+Todas as sementes já estão fixadas no código:
+ 
+- `SEED = 42` no K-Means, PCA, UMAP, subamostras do teste de estabilidade e validação cruzada.
+- Sementes `0` e `1` só no teste de estabilidade da UMAP.
 ## Delimitação do desenvolvimento
-
+ 
 | Veio de biblioteca | Implementado pelo grupo |
 |---|---|
 | K-Means, AgglomerativeClustering, PCA, StandardScaler, RobustScaler, KNN e validação cruzada (scikit-learn) | limpeza dos dados com o log de correções |
 | silhueta, Davies-Bouldin, ARI, NMI e trustworthiness (scikit-learn) | codificação multi-hot da morfologia |
-| `linkage`, `dendrogram` e `chi2_contingency` (SciPy) | função `preprocess` com as decisões parametrizadas |
-| UMAP (umap-learn) | teste de estabilidade por subamostras de 80% |
-| | cálculo do erro de reconstrução MSE(d) |
-| | comparação entre as partições do K-Means e do Ward |
-| | análise de sensibilidade ao pré-processamento |
+| `linkage`, `dendrogram`, `fcluster`, `cophenet`, `pdist` e `chi2_contingency` (SciPy) | função `preprocess` com as decisões parametrizadas |
+| UMAP (umap-learn) | V de Cramér, inércia do Ward e teste de estabilidade |
+| | erro de reconstrução MSE(d), comparação K-Means × Ward e análise de sensibilidade |
 | | todas as figuras e interpretações |
