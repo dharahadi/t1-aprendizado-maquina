@@ -4,14 +4,14 @@ Aprendizado de Máquina - Prof. Me. Otávio Parraga - PUCRS
 
 ## Integrantes
 
-| Nome | 
+| Nome | Matrícula |
 |---|
-|Thomaz Szeckir| 
-|Dhara Hadi| 
-|Matheus Azevedo| 
-|Gabriel Ottonelli| 
-|Samuel Morales|
-|Júlia Bettiol|
+|Thomaz Szeckir| 23102712 |
+|Dhara Hadi| 23102242|
+|Matheus Azevedo| 23180103 |
+|Gabriel Ottonelli| 23107019 |
+|Samuel Morales| 23108180 |
+|Júlia Bettiol| 23102448 |
 
 ## Algoritmos escolhidos
 
